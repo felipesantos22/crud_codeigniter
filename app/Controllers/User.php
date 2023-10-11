@@ -3,9 +3,6 @@
 namespace App\Controllers;
 
 use CodeIgniter\API\ResponseTrait;
-use CodeIgniter\Controller;
-
-
 use App\Controllers\BaseController;
 use App\Models\UserModel;
 
@@ -16,9 +13,29 @@ class User extends BaseController
     public function createUser()
     {
         $model = new UserModel();
-        $user = $model->save($this->request->getPost());
-        return $this->respondCreated();
+        $data = $this->request->getJSON();
+
+        if ($model->insert($data)) {
+            $response = [
+                'status'   => 201,
+                'error'    => null,
+                'messages' => [
+                    'success' => 'Dados salvos'
+                ],
+            ];
+            return $this->respondCreated($response);
+        }
+
+        return $this->fail($model->errors());
     }
+
+    // public function createUser()
+    // {
+    //     $model = new UserModel();
+    //     $data = $this->request->getJSON();
+    //     $model->insert($data);
+    //     return $this->respondCreated($model);        
+    // }
 
     public function readUser()
     {
@@ -26,27 +43,4 @@ class User extends BaseController
         $data = $model->findAll();
         return $this->respond($data);
     }
-
-    // private $userModel;
-
-    // public function __construct()
-    // {
-    //     $this->userModel = new \App\Models\UserModel();
-    // }
-
-    // public function read()
-    // {
-    //     // $model = new UserModel();
-    //     // $data = $model ->findAll();
-    //     // return $this->respond($data);
-    //     $data = $this->userModel->findAll();
-    //     return $this->response->setJSON($data);
-    // }
-
-    // public function create()
-    // {
-    //     $newUser = ['nome' => $this->request->getPost('nome')];
-    //     $data = $this->userModel->insert($newUser);
-    //     return $this->response->setJSON($data);
-    // }
 }
