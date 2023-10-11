@@ -10,6 +10,7 @@ class User extends BaseController
 {
     use ResponseTrait;
 
+    //Create user
     public function createUser()
     {
         $model = new UserModel();
@@ -29,18 +30,31 @@ class User extends BaseController
         return $this->fail($model->errors());
     }
 
-    // public function createUser()
-    // {
-    //     $model = new UserModel();
-    //     $data = $this->request->getJSON();
-    //     $model->insert($data);
-    //     return $this->respondCreated($model);        
-    // }
-
+    // Read user
     public function readUser()
     {
         $model = new UserModel();
         $data = $model->findAll();
         return $this->respond($data);
     }
+
+    // lista um livro
+    public function showId($id = null)
+    {
+        $model = new UserModel();
+        $data = $model->getWhere(['id' => $id])->getResult();
+
+        if($data){
+            return $this->respond($data);
+        }
+        
+        return $this->failNotFound('Nenhum dado encontrado com id '.$id);        
+    }
+
+    // Update user
+    public function updateUser()
+    {
+
+    }
+
 }
