@@ -2,7 +2,7 @@
 
 ## O que vou desenvolver?
 
-Você vai desenvolver uma API e um banco de dados para a produção de conteúdo para um blog! Para isso, desenvolverá uma aplicação em Node.js usando o pacote sequelize para fazer um CRUD de posts.
+Irei desenvolver uma API e um banco de dados para a produção de conteúdo para uma loja! Para isso irei usar PHP, MySql e Codeigniter.
 
 Neste projeto você irá:
 
