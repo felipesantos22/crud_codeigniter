@@ -11,8 +11,8 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 
 // Rotas user
-$routes->post('user', 'User::createUser');
-$routes->get('user', 'User::readUser');
-$routes->get('user/(:num)', 'User::showId/$1');
-$routes->put('user/(:num)', 'User::updateUser/$1');
-$routes->delete('user/(:num)', 'User::deleteUser/$1');
+$routes->post('user', 'ProductController::createProduct');
+$routes->get('user', 'ProductController::readProduct');
+$routes->get('user/(:num)', 'ProductController::showId/$1');
+$routes->put('user/(:num)', 'ProductController::updateProduct/$1');
+$routes->delete('user/(:num)', 'ProductController::deleteProduct/$1');

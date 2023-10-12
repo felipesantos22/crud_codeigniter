@@ -4,9 +4,9 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UserModel extends Model
+class ProductModel extends Model
 {
-    protected $table            = 'todo_example';
+    protected $table            = 'product';
     protected $primaryKey       = 'id';
     protected $allowedFields    = ['nome'];
 }

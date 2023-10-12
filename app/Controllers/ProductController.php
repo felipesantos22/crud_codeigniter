@@ -6,12 +6,12 @@ use CodeIgniter\API\ResponseTrait;
 use App\Controllers\BaseController;
 use App\Models\ProductModel;
 
-class User extends BaseController
+class ProductController extends BaseController
 {
     use ResponseTrait;
 
     //Create Product
-    public function createUser()
+    public function createProduct()
     {
         $model = new ProductModel();
         $data = $this->request->getJSON();
@@ -32,7 +32,7 @@ class User extends BaseController
     }
 
     // List All Product
-    public function readUser()
+    public function readProduct()
     {
         $model = new ProductModel();
         $data = $model->findAll();
@@ -53,7 +53,7 @@ class User extends BaseController
     }
 
     // Update Product
-    public function updateUser($id = null)
+    public function updateProduct($id = null)
     {
         $model = new ProductModel();
         $data = $this->request->getJSON();
@@ -74,12 +74,12 @@ class User extends BaseController
     }
 
     // Delete Product
-    public function deleteUser($id = null)
+    public function deleteProduct($id = null)
     {
         $model = new ProductModel();
         $data = $model->find($id);
-        
-        if($data){
+
+        if ($data) {
             $model->delete($id);
             $response = [
                 'status'   => 200,
@@ -91,8 +91,7 @@ class User extends BaseController
             ];
             return $this->respondDeleted($response);
         }
-        
-        return $this->failNotFound('Nenhum dado encontrado com id '.$id);        
+
+        return $this->failNotFound('Nenhum dado encontrado com id ' . $id);
     }
- 
 }
