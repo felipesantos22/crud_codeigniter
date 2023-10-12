@@ -18,7 +18,7 @@ class Order extends Migration
                 'constraint' => 10
             ],
         ]);
-        $this->forge->addPrimaryKey('id');
+        $this->forge->addKey('id');
         $this->forge->createTable('order', true, ['engine' => 'innodb']);
     }
 

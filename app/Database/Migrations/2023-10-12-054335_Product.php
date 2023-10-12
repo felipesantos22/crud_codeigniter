@@ -18,7 +18,7 @@ class Product extends Migration
                 'constraint' => 250
             ],
         ]);
-        $this->forge->addPrimaryKey('id');
+        $this->forge->addKey('id');
         $this->forge->createTable('product', true, ['engine' => 'innodb']);
     }
 
