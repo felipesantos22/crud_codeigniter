@@ -1,62 +1,64 @@
-# CodeIgniter 4 Application Starter
+# Projeto API de Blogs
 
-## What is CodeIgniter?
+## O que vou desenvolver?
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+Você vai desenvolver uma API e um banco de dados para a produção de conteúdo para um blog! Para isso, desenvolverá uma aplicação em Node.js usando o pacote sequelize para fazer um CRUD de posts.
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+Neste projeto você irá:
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+- Desenvolver endpoints que estarão conectados ao seu banco de dados seguindo os princípios do REST;
+- Trabalhar a relação user e post, visto que para fazer um post é necessário usuário e login
+- Trabalhar a relação de posts para categories e de categories para posts, visto que será necessária a utilização categorias para os posts.
 
-The user guide corresponding to the latest version of the framework can be found
-[here](https://codeigniter4.github.io/userguide/).
+## Missão essencial
 
-## Installation & updates
+- [X] PR aberto para entrega do projeto API de Blogs
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+## O que preciso saber para fazer o projeto?
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+- [x] Entender o conceito de Migrations
+- [x] Entender o conceito de Model
+- [x] Entender o conceito de Seeders
+- [x] Entender relacionamentos 1:N
+- [x] Entender relacionamentos N:N
+- [ ] Entender como criar uma rota com JWT
 
-## Setup
+## Habilidades para o projeto
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+### _Vão ser necessárias para realização do projeto_
 
-## Important Change with index.php
+- [x] [Dia 01: ORM - Interface da aplicação com o banco de dados](https://app.betrybe.com/learn/course/5e938f69-6e32-43b3-9685-c936530fd326/module/94d0e996-1827-4fbc-bc24-c99fb592925b/section/0ca77b1d-4770-4646-8368-167d2305e763/day/0da9bd44-abf6-43d6-96b9-9614274e6c36/lesson/f0806ecc-6ea9-45e1-9c81-b92a60db9b6b)
+- [x] [Dia 02: ORM - Associations 1:1 e 1:N](https://app.betrybe.com/learn/course/5e938f69-6e32-43b3-9685-c936530fd326/module/94d0e996-1827-4fbc-bc24-c99fb592925b/section/0ca77b1d-4770-4646-8368-167d2305e763/day/94e113d7-6a86-4536-a1d3-08f55f557811/lesson/1f2a47c4-5a3c-411c-89cd-27190966915e)
+- [x] [Dia 03: ORM - Associations N:N e Transactions](https://app.betrybe.com/learn/course/5e938f69-6e32-43b3-9685-c936530fd326/module/94d0e996-1827-4fbc-bc24-c99fb592925b/section/0ca77b1d-4770-4646-8368-167d2305e763/day/22fa9643-5f27-41f5-943b-2c7cc1c67c01/lesson/be289f53-bd25-4a5f-817e-1770bbf006b4)
+- [ ] [Dia 04: JWT - (JSON Web Token)](https://app.betrybe.com/learn/course/5e938f69-6e32-43b3-9685-c936530fd326/module/94d0e996-1827-4fbc-bc24-c99fb592925b/section/0ca77b1d-4770-4646-8368-167d2305e763/day/85fd2ed3-f6cc-4789-8990-7f5fe827422c/lesson/c93a3302-ddd6-4927-8c09-bf5307b5c492)
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+### Conteúdos de Soft Skills
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+- [x] [Reconhecendo as nossas Emoções](https://app.betrybe.com/learn/course/5e938f69-6e32-43b3-9685-c936530fd326/module/2e0692c9-e226-4e95-860a-b4cad80e3c3c/section/d041930c-2861-493a-ab7e-9f566aa90d29/day/5b748ff2-db33-4356-95c8-709c9ff40263/lesson/b9ef55ce-a2c5-411b-914b-1cbdc5a00cc5)
+- [x] [Empatia](https://app.betrybe.com/learn/course/5e938f69-6e32-43b3-9685-c936530fd326/module/2e0692c9-e226-4e95-860a-b4cad80e3c3c/section/d041930c-2861-493a-ab7e-9f566aa90d29/day/bbba778d-382d-4387-a43d-4f94fca4c7c0/lesson/51278e0b-e687-4ef5-a2b7-4e20122c65ff)
 
-**Please** read the user guide for a better explanation of how CI4 works!
+## Requisitos obrigatórios do projeto
 
-## Repository Management
+- [x] 1. Crie migrations para as tabelas users, categories, blog_posts, posts_categories
+- [x] 2. Crie o modelo User em src/models/User.js com as propriedades corretas
+- [x] 3. Sua aplicação deve ter o endpoint POST /login
+- [ ] 4. Sua aplicação deve ter o endpoint POST /user
+- [x] 5. Sua aplicação deve ter o endpoint GET /user
+- [x] 6. Sua aplicação deve ter o endpoint GET /user/:id
+- [x] 7. Crie o modelo Category em src/models/Category.js com as propriedades corretas
+- [x] 8. Sua aplicação deve ter o endpoint POST /categories
+- [x] 9. Sua aplicação deve ter o endpoint GET /categories
+- [x] 10. Crie o modelo BlogPost em src/models/BlogPost.js com as propriedades e associações corretas
+- [x] 11. Crie o modelo PostCategory em src/models/PostCategory.js com as propriedades e associações corretas
+- [ ] 12. Sua aplicação deve ter o endpoint POST /post
+- [x] 13. Sua aplicação deve ter o endpoint GET /post
+- [x] 14. Sua aplicação deve ter o endpoint GET /post/:id
+- [ ] 15. Sua aplicação deve ter o endpoint PUT /post/:id
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+## Requisitos bônus
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+- [ ] 16. Sua aplicação deve ter o endpoint DELETE /post/:id
+- [ ] 17. Sua aplicação deve ter o endpoint DELETE /user/me
+- [ ] 18. Sua aplicação deve ter o endpoint GET /post/search?q=:searchTerm
 
-## Server Requirements
-
-PHP version 7.4 or higher is required, with the following extensions installed:
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+Desejamos um bom projeto para todas as pessoas estudantes e que seja fonte de muito aprendizado. ✌️
