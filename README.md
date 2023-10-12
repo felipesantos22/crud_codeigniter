@@ -1,4 +1,4 @@
-# Projeto API de Blogs
+# Desafio Backend L5 Networks
 
 ## O que vou desenvolver?
 
@@ -51,9 +51,6 @@ Neste projeto você irá:
 - [x] 10. Crie o modelo BlogPost em src/models/BlogPost.js com as propriedades e associações corretas
 - [x] 11. Crie o modelo PostCategory em src/models/PostCategory.js com as propriedades e associações corretas
 - [ ] 12. Sua aplicação deve ter o endpoint POST /post
-- [x] 13. Sua aplicação deve ter o endpoint GET /post
-- [x] 14. Sua aplicação deve ter o endpoint GET /post/:id
-- [ ] 15. Sua aplicação deve ter o endpoint PUT /post/:id
 
 ## Requisitos bônus
 
