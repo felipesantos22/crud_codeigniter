@@ -21,7 +21,7 @@ Neste projeto irei:
 - [x] Entender o conceito de Seeders
 - [x] Entender relacionamentos 1:N
 - [x] Entender relacionamentos N:N
-- [ ] Entender como criar uma rota com JWT
+- [x] Entender como criar uma rota com JWT
 
 ## Habilidades para o projeto
 
@@ -30,14 +30,14 @@ Neste projeto irei:
 - [x] [Interface da aplicação com o banco de dados](https://app.betrybe.com/learn/course/5e938f69-6e32-43b3-9685-c936530fd326/module/94d0e996-1827-4fbc-bc24-c99fb592925b/section/0ca77b1d-4770-4646-8368-167d2305e763/day/0da9bd44-abf6-43d6-96b9-9614274e6c36/lesson/f0806ecc-6ea9-45e1-9c81-b92a60db9b6b)
 - [x] [Associations 1:N](https://app.betrybe.com/learn/course/5e938f69-6e32-43b3-9685-c936530fd326/module/94d0e996-1827-4fbc-bc24-c99fb592925b/section/0ca77b1d-4770-4646-8368-167d2305e763/day/94e113d7-6a86-4536-a1d3-08f55f557811/lesson/1f2a47c4-5a3c-411c-89cd-27190966915e)
 - [x] [Associations N:N e Transactions](https://app.betrybe.com/learn/course/5e938f69-6e32-43b3-9685-c936530fd326/module/94d0e996-1827-4fbc-bc24-c99fb592925b/section/0ca77b1d-4770-4646-8368-167d2305e763/day/22fa9643-5f27-41f5-943b-2c7cc1c67c01/lesson/be289f53-bd25-4a5f-817e-1770bbf006b4)
-- [ ] [Dia 04: JWT - (JSON Web Token)](https://app.betrybe.com/learn/course/5e938f69-6e32-43b3-9685-c936530fd326/module/94d0e996-1827-4fbc-bc24-c99fb592925b/section/0ca77b1d-4770-4646-8368-167d2305e763/day/85fd2ed3-f6cc-4789-8990-7f5fe827422c/lesson/c93a3302-ddd6-4927-8c09-bf5307b5c492)
+- [x] [Dia 04: JWT - (JSON Web Token)](https://app.betrybe.com/learn/course/5e938f69-6e32-43b3-9685-c936530fd326/module/94d0e996-1827-4fbc-bc24-c99fb592925b/section/0ca77b1d-4770-4646-8368-167d2305e763/day/85fd2ed3-f6cc-4789-8990-7f5fe827422c/lesson/c93a3302-ddd6-4927-8c09-bf5307b5c492)
 
 ## Requisitos obrigatórios do projeto
 
 - [x] 1. Criar migrations para client, product, order e order_product
 - [x] 2. Crie o models para client, product e order
 - [x] 3. Endpoints de CRUD (Create, Read, Update e Delete) de client com os campos (CPF e/ou CNPJ, nome e/ou Razão social, endereço)
-- [ ] 4. Endpoints de CRUD (Create, Read, Update e Delete) de product
+- [x] 4. Endpoints de CRUD (Create, Read, Update e Delete) de product
 - [x] 5. Endpoints de CRUD (Create, Read, Update e Delete) de order, com status (Em Aberto, Pago ou Cancelado)
 
 ## Requisitos não eliminatórios
