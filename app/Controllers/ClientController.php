@@ -97,14 +97,28 @@ class ClientController extends BaseController
         return $this->failNotFound('Nenhum dado encontrado com id ' . $id);
     }
 
-     //Filtrar nomes
-     //http://localhost:8080/product/search?nome=digiteONomeAqui
-     public function filterName()
-     {       
-         $model = new ClientModel();
-         $nome = $this->request->getGet('nome');
-         $client = $model->where('nome',$nome)->findAll();
-         return $this->respond($client);
-     }
-     
+    //Filtrar nomes
+    //http://localhost:8080/product/search?nome=digiteONomeAqui
+    public function filterName()
+    {
+        $model = new ClientModel();
+        $nome = $this->request->getGet('nome');
+        $client = $model->where('nome', $nome)->findAll();
+        return $this->respond($client);
+    }
+
+    // Url para definir o número da página
+    //http://localhost:8080/client/paginated?page=1
+
+    // Url para definir a página e quantos items por página
+    //http://localhost:8080/client/paginated?page=1&per_page=3
+    public function paginated()
+    {
+        $model = new ClientModel();
+        $perPage = $this->request->getVar('per_page');
+        $page = $this->request->getVar('page');
+        $offSet = ($page - 1) * $perPage;
+        $client = $model->paginate($perPage, 'default', $offSet);
+        return $this->respond($client);
+    }
 }
