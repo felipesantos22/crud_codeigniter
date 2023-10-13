@@ -11,24 +11,36 @@ class OrderController extends BaseController
     use ResponseTrait;
 
     //Create Order
+    // public function createOrder()
+    // {
+    //     $model = new OrderModel();
+    //     $data = $this->request->getJSON();
+
+    //     if ($model->insert($data)) {
+    //         $response = [
+    //             'status'   => 201,
+    //             'error'    => null,
+    //             'messages' => [
+    //                 'success' => 'Dados salvos'
+    //             ],
+    //             'Order' => $data
+    //         ];
+    //         return $this->respond($response);
+    //     }
+
+    //     return $this->fail($model->errors());
+    // }
+
     public function createOrder()
     {
         $model = new OrderModel();
-        $data = $this->request->getJSON();
+        $data = [
+            'status' => $this->request->getPost('status'),
+            'client_id' => $this->request->getPost('client_id'),
+        ];
+        $model->insert($data);
 
-        if ($model->insert($data)) {
-            $response = [
-                'status'   => 201,
-                'error'    => null,
-                'messages' => [
-                    'success' => 'Dados salvos'
-                ],
-                'Order' => $data
-            ];
-            return $this->respond($response);
-        }
-
-        return $this->fail($model->errors());
+        return $this->respond($model);
     }
 
     // List All Order
@@ -99,11 +111,10 @@ class OrderController extends BaseController
 
     //Filtrar nomes
     public function filterStatus()
-    {       
+    {
         $model = new OrderModel();
         $nome = $this->request->getGet('status');
-        $client = $model->where('status',$nome)->findAll();
+        $client = $model->where('status', $nome)->findAll();
         return $this->respond($client);
     }
-    
 }

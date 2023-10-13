@@ -124,10 +124,15 @@ class ClientController extends BaseController
 
     // Está é uma maneira mais simples de fazer páginação, porém só conseguimos controlar
     // o número de items pela URL.
-    // Pelos testes que fiz não é lado em consideração a variável perPage em Pager.php
+    // Pelos testes que fiz não é levado em consideração a variável perPage em Pager.php
 
-    //http://localhost:8080/client?page=2
-    public function page(){
+    // Link para documentação.
+    // https://www.codeigniter.com/user_guide/libraries/pagination.html
+
+    // Como acessar a url
+    // http://localhost:8080/client?page=2
+    public function page()
+    {
         $model = new ClientModel();
         $data = [
             'user' => $model->paginate(5),

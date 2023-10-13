@@ -31,7 +31,7 @@ class Client extends Migration
             ]
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('clientes');
+        $this->forge->createTable('client');
     }
 
     public function down()
