@@ -2,7 +2,7 @@
 
 ## O que vou desenvolver?
 
-Irei desenvolver uma API e um banco de dados para uma loja! Para isso irei usar PHP, MySql e Codeigniter.
+Irei desenvolver uma API e um banco de dados para uma loja! Para isso irei usar PHP, MySql, Docker e Codeigniter.
 
 Neste projeto irei:
 
