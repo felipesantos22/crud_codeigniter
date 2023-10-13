@@ -121,4 +121,18 @@ class ClientController extends BaseController
         $client = $model->paginate($perPage, 'default', $offSet);
         return $this->respond($client);
     }
+
+    // Está é uma maneira mais simples de fazer páginação, porém só conseguimos controlar
+    // o número de items pela URL.
+    // Pelos testes que fiz não é lado em consideração a variável perPage em Pager.php
+
+    //http://localhost:8080/client?page=2
+    public function page(){
+        $model = new ClientModel();
+        $data = [
+            'user' => $model->paginate(5),
+            'pager' => $model->pager,
+        ];
+        return $this->respond($data);
+    }
 }

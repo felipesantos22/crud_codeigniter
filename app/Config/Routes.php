@@ -33,6 +33,7 @@ $routes->delete('order/(:num)', 'OrderController::deleteOrder/$1');
 // Rotas client
 $routes->post('client', 'ClientController::createClient');
 $routes->get('client', 'ClientController::readClient');
+$routes->get('client', 'ClientController::page');
 $routes->get('client/(:num)', 'ClientController::showId/$1');
 $routes->get('client/search', 'ClientController::filterName');
 $routes->get('client/paginated', 'ClientController::paginated');
