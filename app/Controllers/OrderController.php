@@ -96,4 +96,14 @@ class OrderController extends BaseController
 
         return $this->failNotFound('Nenhum dado encontrado com id ' . $id);
     }
+
+    //Filtrar nomes
+    public function filterStatus()
+    {       
+        $model = new OrderModel();
+        $nome = $this->request->getGet('status');
+        $client = $model->where('status',$nome)->findAll();
+        return $this->respond($client);
+    }
+    
 }

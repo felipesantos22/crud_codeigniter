@@ -96,4 +96,13 @@ class ProductController extends BaseController
 
         return $this->failNotFound('Nenhum dado encontrado com id ' . $id);
     }
+
+     //Filtrar nomes
+     public function filterName()
+     {       
+         $model = new ProductModel();
+         $nome = $this->request->getGet('nome');
+         $client = $model->where('nome',$nome)->findAll();
+         return $this->respond($client);
+     }
 }

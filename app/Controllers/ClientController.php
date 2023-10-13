@@ -96,4 +96,15 @@ class ClientController extends BaseController
 
         return $this->failNotFound('Nenhum dado encontrado com id ' . $id);
     }
+
+     //Filtrar nomes
+     //http://localhost:8080/product/search?nome=digiteONomeAqui
+     public function filterName()
+     {       
+         $model = new ClientModel();
+         $nome = $this->request->getGet('nome');
+         $client = $model->where('nome',$nome)->findAll();
+         return $this->respond($client);
+     }
+     
 }

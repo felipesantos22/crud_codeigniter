@@ -22,8 +22,8 @@ class Order extends Migration
             ],
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->addForeignKey('client_id', 'client', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->createTable('order', true, ['engine' => 'innodb']);
+        $this->forge->addForeignKey('client_id', 'clientes', 'id', 'CASCADE', 'CASCADE');
+        $this->forge->createTable('order');
     }
 
     public function down()

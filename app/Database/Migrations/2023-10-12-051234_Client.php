@@ -31,7 +31,7 @@ class Client extends Migration
             ]
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('client', true, ['engine' => 'innodb']);
+        $this->forge->createTable('clientes');
     }
 
     public function down()
