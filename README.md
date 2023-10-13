@@ -17,7 +17,7 @@ Neste projeto irei:
 
 -  Entender o conceito de Migrations
 -  Entender o conceito de Model
--  Entender relacionamentos 1:N bidirecional entre Clientes e pedidos
+-  Entender relacionamentos 1:N bidirecional entre clientes e pedidos
 -  Entender relacionamentos N:N entre pedidos e produtos
 -  Entender como criar uma rota com JWT
 
