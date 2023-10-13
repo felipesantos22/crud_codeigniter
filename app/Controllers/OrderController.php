@@ -23,7 +23,7 @@ class OrderController extends BaseController
                 'messages' => [
                     'success' => 'Dados salvos'
                 ],
-                'Order' => $data
+                'Pedido' => $data
             ];
             return $this->respond($response);
         }

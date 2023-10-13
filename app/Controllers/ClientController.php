@@ -5,6 +5,7 @@ namespace App\Controllers;
 use CodeIgniter\API\ResponseTrait;
 use App\Controllers\BaseController;
 use App\Models\ClientModel;
+use App\Models\OrderModel;
 
 class ClientController extends BaseController
 {
@@ -31,6 +32,9 @@ class ClientController extends BaseController
         return $this->fail($model->errors());
     }
 
+
+
+
     // List All Client
     public function readClient()
     {
@@ -38,6 +42,34 @@ class ClientController extends BaseController
         $data = $model->findAll();
         return $this->respond($data);
     }
+
+
+
+
+    // No seu controller
+    public function showOrdersByClientId($clientId)
+    {
+        $clientModel = new ClientModel();
+        $client = $clientModel->find($clientId);
+
+        if (!$client) {
+            return $this->failNotFound('Cliente não encontrado com ID ' . $clientId);
+        }
+
+        // Carregar os pedidos associados a este cliente
+        $orderModel = new OrderModel();
+        $orders = $orderModel->where('client_id', $clientId)->findAll();
+
+        $data = [
+            'cliente' => $client,
+            'pedidos' => $orders
+        ];
+
+        return $this->respond($data);
+    }
+
+
+    
 
     // List Client By Id
     public function showId($id = null)
@@ -51,6 +83,9 @@ class ClientController extends BaseController
 
         return $this->failNotFound('Nenhum dado encontrado com id ' . $id);
     }
+
+
+
 
     // Update Client
     public function updateClient($id = null)
@@ -75,6 +110,9 @@ class ClientController extends BaseController
         }
     }
 
+
+
+
     // Delete Client
     public function deleteClient($id = null)
     {
@@ -97,6 +135,9 @@ class ClientController extends BaseController
         return $this->failNotFound('Nenhum dado encontrado com id ' . $id);
     }
 
+
+
+
     //Filtrar nomes
     //http://localhost:8080/product/search?nome=digiteONomeAqui
     public function filterName()
@@ -106,6 +147,10 @@ class ClientController extends BaseController
         $client = $model->where('nome', $nome)->findAll();
         return $this->respond($client);
     }
+
+
+
+
 
     // Url para definir o número da página
     //http://localhost:8080/client/paginated?page=1
@@ -121,6 +166,10 @@ class ClientController extends BaseController
         $client = $model->paginate($perPage, 'default', $offSet);
         return $this->respond($client);
     }
+
+
+
+
 
     // Está é uma maneira mais simples de fazer páginação, porém só conseguimos controlar
     // o número de items pela URL.
