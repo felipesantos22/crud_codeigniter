@@ -17,8 +17,12 @@ class Order extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 10
             ],
+            'client_id' => [
+                'type' => 'INT',
+            ],
         ]);
-        $this->forge->addKey('id');
+        $this->forge->addPrimaryKey('id');
+        $this->forge->addForeignKey('client_id', 'client', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('order', true, ['engine' => 'innodb']);
     }
 

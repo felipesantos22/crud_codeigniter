@@ -57,7 +57,9 @@ class ClientController extends BaseController
     {
         $model = new ClientModel();
         $data = $this->request->getJSON();
-
+        if (!$model->find($id)) {
+            return $this->failNotFound('Nenhum dado encontrado com id ' . $id);
+        }
         if ($model->update($id, $data)) {
             $response = [
                 'status'   => 200,
@@ -67,10 +69,10 @@ class ClientController extends BaseController
                 ],
                 'Product' => $data
             ];
-            return $this->respond($response);
-        };
-
-        return $this->fail($model->errors());
+            return $this->respondUpdated($response);
+        } else {
+            return $this->fail($model->errors());
+        }
     }
 
     // Delete Client

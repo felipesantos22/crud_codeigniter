@@ -57,7 +57,9 @@ class OrderController extends BaseController
     {
         $model = new OrderModel();
         $data = $this->request->getJSON();
-
+        if (!$model->find($id)) {
+            return $this->failNotFound('Nenhum dado encontrado com id ' . $id);
+        }
         if ($model->update($id, $data)) {
             $response = [
                 'status'   => 200,
