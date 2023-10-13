@@ -10,38 +10,28 @@ class OrderController extends BaseController
 {
     use ResponseTrait;
 
-    //Create Order
-    // public function createOrder()
-    // {
-    //     $model = new OrderModel();
-    //     $data = $this->request->getJSON();
-
-    //     if ($model->insert($data)) {
-    //         $response = [
-    //             'status'   => 201,
-    //             'error'    => null,
-    //             'messages' => [
-    //                 'success' => 'Dados salvos'
-    //             ],
-    //             'Order' => $data
-    //         ];
-    //         return $this->respond($response);
-    //     }
-
-    //     return $this->fail($model->errors());
-    // }
-
+    // Create Order
     public function createOrder()
     {
         $model = new OrderModel();
-        $data = [
-            'status' => $this->request->getPost('status'),
-            'client_id' => $this->request->getPost('client_id'),
-        ];
-        $model->insert($data);
+        $data = $this->request->getJSON();
 
-        return $this->respond($model);
+        if ($model->insert($data)) {
+            $response = [
+                'status'   => 201,
+                'error'    => null,
+                'messages' => [
+                    'success' => 'Dados salvos'
+                ],
+                'Order' => $data
+            ];
+            return $this->respond($response);
+        }
+
+        return $this->fail($model->errors());
     }
+
+
 
     // List All Order
     public function readOrder()
