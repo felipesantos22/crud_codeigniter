@@ -5,7 +5,6 @@ namespace App\Controllers;
 use CodeIgniter\API\ResponseTrait;
 use App\Controllers\BaseController;
 use App\Models\ClienteModel;
-use App\Models\OrderModel;
 use App\Models\PedidoModel;
 
 class ClienteController extends BaseController
@@ -50,22 +49,22 @@ class ClienteController extends BaseController
     // No seu controller
     // Rota para imprimir clientes com os pedidos
     // http://localhost:8080/cliente/showOrdersByClientId/1
-    public function showOrdersByClientId($clientId)
+    public function showOrdersByClientId($clienteId)
     {
-        $clientModel = new ClienteModel();
-        $client = $clientModel->find($clientId);
+        $clienteModel = new ClienteModel();
+        $cliente = $clienteModel->find($clienteId);
 
-        if (!$client) {
-            return $this->failNotFound('Cliente não encontrado com ID ' . $clientId);
+        if (!$cliente) {
+            return $this->failNotFound('Cliente não encontrado com ID ' . $clienteId);
         }
 
         // Carregar os pedidos associados a este cliente
-        $orderModel = new PedidoModel();
-        $orders = $orderModel->where('cliente_id', $clientId)->findAll();
+        $pedidoModel = new PedidoModel();
+        $pedido = $pedidoModel->where('cliente_id', $clienteId)->findAll();
 
         $data = [
-            'cliente' => $client,
-            'pedidos' => $orders
+            'cliente' => $cliente,
+            'pedidos' => $pedido
         ];
 
         return $this->respond($data);

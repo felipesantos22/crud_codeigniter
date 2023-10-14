@@ -44,6 +44,7 @@ $routes->delete('cliente/(:num)', 'ClienteController::deleteClient/$1');
 
 // Rotas PedidoProdutos
 $routes->post('pedidoproduto', 'PedidoProdutoController::createOrderProduct');
+$routes->get('order/pedidoComProdutos/(:num)', 'PedidoProdutoController::pedidoComProdutos/$1');
 
 
 // Não está funcionado.
