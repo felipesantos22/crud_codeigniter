@@ -24,7 +24,9 @@ class PedidoModel extends Model
 
     // Validation
     protected $validationRules      = ['status' => 'required|in_list[Em Aberto,Pago,Cancelado]',];
-    protected $validationMessages   = [];
+    protected $validationMessages   = ['status' => [
+        'in_list' => 'O campo Status deve ser um dos seguintes valores: Em Aberto, Pago, Cancelado.'
+    ],];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 
