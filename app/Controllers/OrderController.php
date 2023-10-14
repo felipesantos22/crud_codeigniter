@@ -14,8 +14,7 @@ class OrderController extends BaseController
     public function createOrder()
     {
         $model = new PedidoModel();
-        $data = $this->request->getJSON();
-
+        $data = $this->request->getJSON();    
         if ($model->insert($data)) {
             $response = [
                 'status'   => 201,
