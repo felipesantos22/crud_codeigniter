@@ -17,17 +17,17 @@ Neste projeto irei:
 
 -  Entender o conceito de Migrations
 -  Entender o conceito de Model
--  Entender relacionamentos 1:N bidirecional entre clientes e pedidos
+-  Entender relacionamentos 1:N entre clientes e pedidos
 -  Entender relacionamentos N:N entre pedidos e produtos
 -  Entender como criar uma rota com JWT
 
 ## Requisitos obrigatórios do projeto
 
- 1. Criar migrations para client, product, order e order_product
- 2. Criar o models para client, product e order
- 3. Endpoints de CRUD (Create, Read, Update e Delete) de client com os campos (CPF e/ou CNPJ, nome e/ou Razão social, endereço)
- 4. Endpoints de CRUD (Create, Read, Update e Delete) de product
- 5. Endpoints de CRUD (Create, Read, Update e Delete) de order, com status (Em Aberto, Pago ou Cancelado)
+ 1. Criar migrations para clientes, produtos, pedidos e pedidos_produtos
+ 2. Criar o models para cliente, produtos e pedidos
+ 3. Endpoints de CRUD (Create, Read, Update e Delete) de clientes com os campos (CPF e/ou CNPJ, nome e/ou Razão social, endereço)
+ 4. Endpoints de CRUD (Create, Read, Update e Delete) de produtos
+ 5. Endpoints de CRUD (Create, Read, Update e Delete) de pedidos, com status (Em Aberto, Pago ou Cancelado)
 
 ## Requisitos não eliminatórios
 
