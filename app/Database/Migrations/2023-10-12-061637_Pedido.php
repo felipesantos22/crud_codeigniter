@@ -17,12 +17,12 @@ class Pedido extends Migration
                 'type' => 'VARCHAR',    
                 'constraint' => 10            
             ],
-            'client_id' => [
+            'cliente_id' => [
                 'type' => 'INT',
             ],
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->addForeignKey('client_id', 'client', 'id');
+        $this->forge->addForeignKey('cliente_id', 'cliente', 'id');
         $this->forge->createTable('pedido');
     }
 

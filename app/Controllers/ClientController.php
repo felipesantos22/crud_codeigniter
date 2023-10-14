@@ -47,6 +47,8 @@ class ClientController extends BaseController
 
 
     // No seu controller
+    // Rota para imprimir clientes com os pedidos
+    // http://localhost:8080/client/showOrdersByClientId/1
     public function showOrdersByClientId($clientId)
     {
         $clientModel = new ClientModel();
@@ -69,7 +71,7 @@ class ClientController extends BaseController
     }
 
 
-    
+
 
     // List Client By Id
     public function showId($id = null)
