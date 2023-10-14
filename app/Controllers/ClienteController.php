@@ -24,7 +24,7 @@ class ClienteController extends BaseController
                 'messages' => [
                     'success' => 'Dados salvos'
                 ],
-                'Client' => $data
+                'Cliente' => $data
             ];
             return $this->respond($response);
         }
