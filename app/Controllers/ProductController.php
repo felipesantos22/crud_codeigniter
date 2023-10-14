@@ -23,7 +23,7 @@ class ProductController extends BaseController
                 'messages' => [
                     'success' => 'Dados salvos'
                 ],
-                'Cliente' => $data
+                'Produto' => $data
             ];
             return $this->respond($response);
         }

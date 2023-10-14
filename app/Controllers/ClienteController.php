@@ -16,7 +16,7 @@ class ClienteController extends BaseController
     {
         $model = new ClienteModel();
         $data = $this->request->getJSON();
-
+        
         if ($model->insert($data)) {
             $response = [
                 'status'   => 201,
@@ -134,7 +134,7 @@ class ClienteController extends BaseController
             return $this->respondDeleted($response);
         }
 
-        return $this->failNotFound('Nenhum dado encontrado com id ' . $id);
+        return $this->failNotFound('Nenhum cliente encontrado com id ' . $id);
     }
 
 

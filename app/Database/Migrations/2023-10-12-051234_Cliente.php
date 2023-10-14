@@ -13,9 +13,9 @@ class Cliente extends Migration
                 'type' => 'INT',
                 'auto_increment' => true
             ],
-            'cpf' => [
+            'cnpj' => [
                 'type' => 'VARCHAR',
-                'constraint' => 11
+                'constraint' => 11,
             ],
             'nome' => [
                 'type' => 'VARCHAR',

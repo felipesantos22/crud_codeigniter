@@ -42,7 +42,7 @@ class PedidoProdutoController extends BaseController
         $pedido = $pedidoModel->find($pedidoId);
 
         if (!$pedido) {
-            return $this->failNotFound('Pedido não encontrado com ID ' . $pedido);
+            return $this->failNotFound('Pedido não encontrado com ID ' . $pedidoId);
         }
 
         // Carregar os produtos associados a este pedido
@@ -52,6 +52,30 @@ class PedidoProdutoController extends BaseController
         $data = [
             'pedido' => $pedido,
             'produtos' => $produtos
+        ];
+
+        return $this->respond($data);
+    }
+
+    // Função para buscar produtos e seus pedidos
+    // Exemplo de rota
+    // http://localhost:8080/order/produtosComPedidos/2
+    public function produtosComPedidos($produtoId)
+    {
+        $produtoModel = new ProdutoModel();
+        $produto = $produtoModel->find($produtoId);
+
+        if (!$produto) {
+            return $this->failNotFound('Pedido não encontrado com ID ' . $produtoId);
+        }
+
+        // Carregar os produtos associados a este pedido
+        $pedidoModel = new PedidoModel();
+        $pedidos = $pedidoModel->where('id', $produtoId)->findAll();
+
+        $data = [
+            'produto' => $produto,
+            'pedidos' => $pedidos
         ];
 
         return $this->respond($data);

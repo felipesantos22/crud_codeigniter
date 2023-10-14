@@ -17,6 +17,9 @@ class Produto extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 250
             ],
+            'valor' => [
+                'type' => 'INT',
+            ],
         ]);
         $this->forge->addKey('id');
         $this->forge->createTable('produto', true, ['engine' => 'innodb']);

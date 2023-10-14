@@ -13,7 +13,7 @@ class PedidoModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['status','cliente_id'];
+    protected $allowedFields    = ['status', 'cliente_id'];
 
     // Dates
     protected $useTimestamps = false;
@@ -23,7 +23,7 @@ class PedidoModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
+    protected $validationRules      = ['status' => 'required|in_list[Em Aberto,Pago,Cancelado]',];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
