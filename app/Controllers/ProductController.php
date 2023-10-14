@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use CodeIgniter\API\ResponseTrait;
 use App\Controllers\BaseController;
-use App\Models\ProductModel;
+use App\Models\ProdutoModel;
 
 class ProductController extends BaseController
 {
@@ -13,7 +13,7 @@ class ProductController extends BaseController
     //Create Product
     public function createProduct()
     {
-        $model = new ProductModel();
+        $model = new ProdutoModel();
         $data = $this->request->getJSON();
 
         if ($model->insert($data)) {
@@ -31,18 +31,24 @@ class ProductController extends BaseController
         return $this->fail($model->errors());
     }
 
+
+
+
     // List All Product
     public function readProduct()
     {
-        $model = new ProductModel();
+        $model = new ProdutoModel();
         $data = $model->findAll();
         return $this->respond($data);
     }
 
+
+
+
     // List Product By Id
     public function showId($id = null)
     {
-        $model = new ProductModel();
+        $model = new ProdutoModel();
         $data = $model->getWhere(['id' => $id])->getResult();
 
         if ($data) {
@@ -52,10 +58,13 @@ class ProductController extends BaseController
         return $this->failNotFound('Nenhum dado encontrado com id ' . $id);
     }
 
+
+
+
     // Update Product
     public function updateProduct($id = null)
     {
-        $model = new ProductModel();
+        $model = new ProdutoModel();
         $data = $this->request->getJSON();
         if (!$model->find($id)) {
             return $this->failNotFound('Nenhum dado encontrado com id ' . $id);
@@ -75,10 +84,13 @@ class ProductController extends BaseController
         return $this->fail($model->errors());
     }
 
+
+
+
     // Delete Product
     public function deleteProduct($id = null)
     {
-        $model = new ProductModel();
+        $model = new ProdutoModel();
         $data = $model->find($id);
 
         if ($data) {
@@ -97,10 +109,13 @@ class ProductController extends BaseController
         return $this->failNotFound('Nenhum dado encontrado com id ' . $id);
     }
 
+
+
+    
      //Filtrar nomes
      public function filterName()
      {       
-         $model = new ProductModel();
+         $model = new ProdutoModel();
          $nome = $this->request->getGet('nome');
          $client = $model->where('nome',$nome)->findAll();
          return $this->respond($client);

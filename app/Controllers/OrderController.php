@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use CodeIgniter\API\ResponseTrait;
 use App\Controllers\BaseController;
-use App\Models\OrderModel;
+use App\Models\PedidoModel;
 
 class OrderController extends BaseController
 {
@@ -13,7 +13,7 @@ class OrderController extends BaseController
     // Create Order
     public function createOrder()
     {
-        $model = new OrderModel();
+        $model = new PedidoModel();
         $data = $this->request->getJSON();
 
         if ($model->insert($data)) {
@@ -36,15 +36,18 @@ class OrderController extends BaseController
     // List All Order
     public function readOrder()
     {
-        $model = new OrderModel();
+        $model = new PedidoModel();
         $data = $model->findAll();
         return $this->respond($data);
     }
 
+
+
+
     // List Order By Id
     public function showId($id = null)
     {
-        $model = new OrderModel();
+        $model = new PedidoModel();
         $data = $model->getWhere(['id' => $id])->getResult();
 
         if ($data) {
@@ -54,10 +57,13 @@ class OrderController extends BaseController
         return $this->failNotFound('Nenhum dado encontrado com id ' . $id);
     }
 
+
+
+
     // Update Order
     public function updateOrder($id = null)
     {
-        $model = new OrderModel();
+        $model = new PedidoModel();
         $data = $this->request->getJSON();
         if (!$model->find($id)) {
             return $this->failNotFound('Nenhum dado encontrado com id ' . $id);
@@ -77,10 +83,13 @@ class OrderController extends BaseController
         return $this->fail($model->errors());
     }
 
+
+
+
     // Delete Order
     public function deleteOrder($id = null)
     {
-        $model = new OrderModel();
+        $model = new PedidoModel();
         $data = $model->find($id);
 
         if ($data) {
@@ -99,10 +108,13 @@ class OrderController extends BaseController
         return $this->failNotFound('Nenhum dado encontrado com id ' . $id);
     }
 
+
+
+
     //Filtrar nomes
     public function filterStatus()
     {
-        $model = new OrderModel();
+        $model = new PedidoModel();
         $nome = $this->request->getGet('status');
         $client = $model->where('status', $nome)->findAll();
         return $this->respond($client);

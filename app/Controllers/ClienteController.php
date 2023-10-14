@@ -4,17 +4,18 @@ namespace App\Controllers;
 
 use CodeIgniter\API\ResponseTrait;
 use App\Controllers\BaseController;
-use App\Models\ClientModel;
+use App\Models\ClienteModel;
 use App\Models\OrderModel;
+use App\Models\PedidoModel;
 
-class ClientController extends BaseController
+class ClienteController extends BaseController
 {
     use ResponseTrait;
 
     //Create Client
     public function createClient()
     {
-        $model = new ClientModel();
+        $model = new ClienteModel();
         $data = $this->request->getJSON();
 
         if ($model->insert($data)) {
@@ -38,7 +39,7 @@ class ClientController extends BaseController
     // List All Client
     public function readClient()
     {
-        $model = new ClientModel();
+        $model = new ClienteModel();
         $data = $model->findAll();
         return $this->respond($data);
     }
@@ -48,10 +49,10 @@ class ClientController extends BaseController
 
     // No seu controller
     // Rota para imprimir clientes com os pedidos
-    // http://localhost:8080/client/showOrdersByClientId/1
+    // http://localhost:8080/cliente/showOrdersByClientId/1
     public function showOrdersByClientId($clientId)
     {
-        $clientModel = new ClientModel();
+        $clientModel = new ClienteModel();
         $client = $clientModel->find($clientId);
 
         if (!$client) {
@@ -59,8 +60,8 @@ class ClientController extends BaseController
         }
 
         // Carregar os pedidos associados a este cliente
-        $orderModel = new OrderModel();
-        $orders = $orderModel->where('client_id', $clientId)->findAll();
+        $orderModel = new PedidoModel();
+        $orders = $orderModel->where('cliente_id', $clientId)->findAll();
 
         $data = [
             'cliente' => $client,
@@ -76,7 +77,7 @@ class ClientController extends BaseController
     // List Client By Id
     public function showId($id = null)
     {
-        $model = new ClientModel();
+        $model = new ClienteModel();
         $data = $model->getWhere(['id' => $id])->getResult();
 
         if ($data) {
@@ -92,7 +93,7 @@ class ClientController extends BaseController
     // Update Client
     public function updateClient($id = null)
     {
-        $model = new ClientModel();
+        $model = new ClienteModel();
         $data = $this->request->getJSON();
         if (!$model->find($id)) {
             return $this->failNotFound('Nenhum dado encontrado com id ' . $id);
@@ -118,7 +119,7 @@ class ClientController extends BaseController
     // Delete Client
     public function deleteClient($id = null)
     {
-        $model = new ClientModel();
+        $model = new ClienteModel();
         $data = $model->find($id);
 
         if ($data) {
@@ -141,10 +142,10 @@ class ClientController extends BaseController
 
 
     //Filtrar nomes
-    //http://localhost:8080/product/search?nome=digiteONomeAqui
+    //http://localhost:8080/produto/search?nome=digiteONomeAqui
     public function filterName()
     {
-        $model = new ClientModel();
+        $model = new ClienteModel();
         $nome = $this->request->getGet('nome');
         $client = $model->where('nome', $nome)->findAll();
         return $this->respond($client);
@@ -155,13 +156,13 @@ class ClientController extends BaseController
 
 
     // Url para definir o número da página
-    //http://localhost:8080/client/paginated?page=1
+    //http://localhost:8080/cliente/paginated?page=1
 
     // Url para definir a página e quantos items por página
-    //http://localhost:8080/client/paginated?page=1&per_page=3
+    //http://localhost:8080/cliente/paginated?page=1&per_page=3
     public function paginated()
     {
-        $model = new ClientModel();
+        $model = new ClienteModel();
         $perPage = $this->request->getVar('per_page');
         $page = $this->request->getVar('page');
         $offSet = ($page - 1) * $perPage;
@@ -181,10 +182,10 @@ class ClientController extends BaseController
     // https://www.codeigniter.com/user_guide/libraries/pagination.html
 
     // Como acessar a url
-    // http://localhost:8080/client?page=2
+    // http://localhost:8080/cliente?page=2
     public function page()
     {
-        $model = new ClientModel();
+        $model = new ClienteModel();
         $data = [
             'user' => $model->paginate(5),
             'pager' => $model->pager,
