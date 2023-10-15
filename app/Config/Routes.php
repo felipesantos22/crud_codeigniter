@@ -31,15 +31,15 @@ $routes->delete('order/(:num)', 'OrderController::deleteOrder/$1');
 
 
 // Rotas client
-$routes->post('cliente', 'ClienteController::createClient');
-$routes->get('cliente', 'ClienteController::readClient');
-$routes->get('cliente', 'ClienteController::page');
-$routes->get('cliente/(:num)', 'ClienteController::showId/$1');
-$routes->get('cliente/showOrdersByClientId/(:num)', 'ClienteController::showOrdersByClientId/$1');
-$routes->get('cliente/search', 'ClienteController::filterName');
-$routes->get('cliente/paginated', 'ClienteController::paginated');
-$routes->put('cliente/(:num)', 'ClienteController::updateClient/$1');
-$routes->delete('cliente/(:num)', 'ClienteController::deleteClient/$1');
+$routes->post('client', 'ClientController::createClient');
+$routes->get('client', 'ClientController::readClient');
+$routes->get('client', 'ClientController::page');
+$routes->get('client/(:num)', 'ClientController::showId/$1');
+$routes->get('client/showOrdersByClientId/(:num)', 'ClientController::showOrdersByClientId/$1');
+$routes->get('client/search', 'ClientController::filterName');
+$routes->get('client/paginated', 'ClientController::paginated');
+$routes->put('client/(:num)', 'ClientController::updateClient/$1');
+$routes->delete('client/(:num)', 'ClientController::deleteClient/$1');
 
 
 // Rotas PedidoProdutos
