@@ -23,7 +23,10 @@ class PedidosProdutosModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
+    protected $validationRules      = [
+        'pedido_id' => 'is_valid',
+        'produto_id' => 'is_valid'
+    ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;

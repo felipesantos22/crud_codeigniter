@@ -23,6 +23,7 @@ class PedidoModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
+    // https://codeigniter4.github.io/userguide/libraries/validation.html#
     protected $validationRules      = [
         'status' => 'required|in_list[Em Aberto,Pago,Cancelado]',
         'cliente_id' => 'is_valid'

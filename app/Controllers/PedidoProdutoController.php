@@ -7,31 +7,44 @@ use App\Controllers\BaseController;
 use App\Models\PedidoModel;
 use App\Models\PedidosProdutosModel;
 use App\Models\ProdutoModel;
+use Exception;
 
 class PedidoProdutoController extends BaseController
 {
     use ResponseTrait;
 
     // Método para criar associações entre pedidos e produtos
+    // Como as FK são passadas diretamente pelo corpo da requisição, foi preciso tratar o erro na
+    // model e na controller
     public function createOrderProduct()
     {
-        $model = new PedidosProdutosModel();
-        $data = $this->request->getJSON();
+        try {
+            $model = new PedidosProdutosModel();
+            $data = $this->request->getJSON();
 
-        if ($model->insert($data)) {
+            if ($model->insert($data)) {
+                $response = [
+                    'status'   => 201,
+                    'messages' => [
+                        'Success' => 'Associação criada'
+                    ],
+                    'data' => $data
+                ];
+                return $this->respondCreated($response);
+            }
+        } catch (Exception $e) {
             $response = [
-                'status'   => 201,
-                'error'    => null,
+                'status'   => 404,
                 'messages' => [
-                    'success' => 'Associação criada'
+                    'Error' => 'Pedido_id ou Produto_id inválido'
                 ],
-                'data' => $data
             ];
-            return $this->respondCreated($response);
+            return $this->respond($response, 404);
         }
-
-        return $this->fail($model->errors());
     }
+
+
+    
 
     // Função para buscar pedidos com seus produtos
     // Exemplo de rota
@@ -56,6 +69,9 @@ class PedidoProdutoController extends BaseController
 
         return $this->respond($data);
     }
+
+
+
 
     // Função para buscar produtos e seus pedidos
     // Exemplo de rota
