@@ -23,10 +23,15 @@ class PedidoModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = ['status' => 'required|in_list[Em Aberto,Pago,Cancelado]',];
-    protected $validationMessages   = ['status' => [
-        'in_list' => 'O campo Status deve ser um dos seguintes valores: Em Aberto, Pago, Cancelado.'
-    ],];
+    protected $validationRules      = [
+        'status' => 'required|in_list[Em Aberto,Pago,Cancelado]',
+        'cliente_id' => 'is_valid'
+    ];
+    protected $validationMessages   = [
+        'status' => [
+            'in_list' => 'O campo Status deve ser um dos seguintes valores: Em Aberto, Pago, Cancelado.'
+        ],
+    ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 

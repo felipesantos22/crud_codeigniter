@@ -5,6 +5,7 @@ namespace App\Controllers;
 use CodeIgniter\API\ResponseTrait;
 use App\Controllers\BaseController;
 use App\Models\PedidoModel;
+use Exception;
 
 class OrderController extends BaseController
 {
@@ -13,21 +14,29 @@ class OrderController extends BaseController
     // Create Order
     public function createOrder()
     {
-        $model = new PedidoModel();
-        $data = $this->request->getJSON();    
-        if ($model->insert($data)) {
-            $response = [
-                'status'   => 201,
-                'error'    => null,
-                'messages' => [
-                    'success' => 'Dados salvos'
-                ],
-                'Pedido' => $data
-            ];
-            return $this->respond($response);
-        }
 
-        return $this->fail($model->errors());
+        try {
+            $model = new PedidoModel();
+            $data = $this->request->getJSON();
+            if ($model->insert($data)) {
+                $response = [
+                    'status'   => 201,
+                    'messages' => [
+                        'success' => 'Dados salvos'
+                    ],
+                    'Pedido' => $data
+                ];
+                return $this->respond($response);
+            }
+        } catch (Exception $e) {
+            $response = [
+                'status'   => 404,
+                'messages' => [
+                    'Error' => 'Cliente_id invalido'
+                ],
+            ];
+            return $this->respond($response, 404);
+        }
     }
 
 

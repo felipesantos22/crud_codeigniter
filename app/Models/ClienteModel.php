@@ -24,18 +24,19 @@ class ClienteModel extends Model
 
     // Validation
     protected $validationRules      = [
-        'razao_social' => 'required|is_unique[cliente.razao_social]',
-        'cnpj' => 'required|is_unique[cliente.cnpj]'
+        'cnpj' => 'required|is_unique[cliente.cnpj]',
+        'razao_social' => 'required|is_unique[cliente.razao_social]'
     ];
     protected $validationMessages   = [
+        'cnpj' => [
+            'is_unique' => 'O cjpj já está em uso.',
+            'required' => 'O campo cnpj é obrigatório.',
+        ],
         'razao_social' => [
             'is_unique' => 'Razão social já está em uso.',
             'required' => 'O campo razão social é obrigatório.',
         ],
-        'cnpj' => [
-            'is_unique' => 'O cjpj já está em uso.',
-            'required' => 'O campo cnpj é obrigatório.',
-        ]
+
     ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
