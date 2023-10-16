@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use CodeIgniter\API\ResponseTrait;
 use App\Controllers\BaseController;
+use App\Models\ClientModel;
 use App\Models\OrderModel;
 use Exception;
 
@@ -12,11 +13,40 @@ class OrderController extends BaseController
     use ResponseTrait;
 
 
+    // public function createOrder()
+    // {
+
+    //     $model = new OrderModel();
+    //     $data = $this->request->getJSON();
+
+    //     if ($model->insert($data)) {
+    //         $response = [
+    //             'status'   => 201,
+    //             'messages' => [
+    //                 'success' => 'Pedido salvo'
+    //             ],
+    //             'Pedido' => $data
+    //         ];
+    //         return $this->respond($response);
+    //     }
+    //     return $this->fail($model->errors());
+    // }
+
+
     public function createOrder()
     {
 
         $model = new OrderModel();
         $data = $this->request->getJSON();
+
+        $clienteModel = new ClientModel();
+
+        
+        $cliente_id = $this->request->getVar('cliente_id');
+        
+
+        $cliente = $clienteModel->find($cliente_id);
+
         if ($model->insert($data)) {
             $response = [
                 'status'   => 201,
@@ -27,9 +57,11 @@ class OrderController extends BaseController
             ];
             return $this->respond($response);
         }
+        if (empty($cliente)) {
+            return $this->fail($model->errors());
+        }
         return $this->fail($model->errors());
     }
-
 
 
 

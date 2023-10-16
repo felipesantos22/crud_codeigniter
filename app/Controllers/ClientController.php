@@ -122,7 +122,7 @@ class ClientController extends BaseController
                 'messages' => [
                     'success' => 'Cliente removido'
                 ],
-                'Product' => $data
+                'Cliente' => $data
             ];
             return $this->respondDeleted($response);
         }
