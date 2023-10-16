@@ -51,6 +51,7 @@ $routes->get('product/produtosComPedidos/(:num)', 'PedidoProdutoController::prod
 // Rotas de usuário
 $routes->post('user', 'RegisterController::index');
 $routes->get('user', 'UserController::index');
+$routes->delete('user/(:num)', 'UserController::deleteUser/$1');
 
 // $routes->resource('product');
 // $routes->resource('order');
