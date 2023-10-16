@@ -47,6 +47,11 @@ $routes->post('pedidoproduto', 'PedidoProdutoController::createOrderProduct');
 $routes->get('order/pedidoComProdutos/(:num)', 'PedidoProdutoController::pedidoComProdutos/$1');
 $routes->get('product/produtosComPedidos/(:num)', 'PedidoProdutoController::produtosComPedidos/$1');
 
+
+// Rotas de usuário
+$routes->post('user', 'RegisterController::index');
+$routes->get('user', 'UserController::index');
+
 // $routes->resource('product');
 // $routes->resource('order');
 // $routes->resource('client');
