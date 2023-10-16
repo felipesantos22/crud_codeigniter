@@ -27,7 +27,7 @@ class ProdutoPedido extends Migration
 
         $this->forge->addPrimaryKey('id');
         $this->forge->addForeignKey('produto_id', 'produto', 'id');
-        $this->forge->addForeignKey('pedido_id', 'pedido', 'id');
+        $this->forge->addForeignKey('pedido_id', 'pedido', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('produto_pedido');
     }
 
