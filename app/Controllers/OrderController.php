@@ -11,30 +11,28 @@ class OrderController extends BaseController
 {
     use ResponseTrait;
 
-    
+
     public function createOrder()
     {
-        try{
-            $model = new OrderModel();
-            $data = $this->request->getJSON();    
-            if ($model->insert($data)) {
-                $response = [
-                    'status'   => 201,
-                    'messages' => [
-                        'success' => 'Pedido salvo'
-                    ],
-                    'Pedido' => $data
-                ];
-                return $this->respond($response);
-            }
-        }catch(Exception $e){
-            return $this->respond($e);
-        }             
+
+        $model = new OrderModel();
+        $data = $this->request->getJSON();
+        if ($model->insert($data)) {
+            $response = [
+                'status'   => 201,
+                'messages' => [
+                    'success' => 'Pedido salvo'
+                ],
+                'Pedido' => $data
+            ];
+            return $this->respond($response);
+        }
+        return $this->fail($model->errors());
     }
 
 
 
-    
+
     public function readOrder()
     {
         $model = new OrderModel();
@@ -115,5 +113,4 @@ class OrderController extends BaseController
         $client = $model->where('status', $nome)->findAll();
         return $this->respond($client);
     }
-    
 }
