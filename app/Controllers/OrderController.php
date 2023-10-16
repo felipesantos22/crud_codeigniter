@@ -4,49 +4,40 @@ namespace App\Controllers;
 
 use CodeIgniter\API\ResponseTrait;
 use App\Controllers\BaseController;
-use App\Models\PedidoModel;
+use App\Models\OrderModel;
 use Exception;
 
 class OrderController extends BaseController
 {
     use ResponseTrait;
 
-    // Create Order
-    // https://codeigniter4.github.io/userguide/libraries/validation.html#
+    
     public function createOrder()
     {
-
-        try {
-            $model = new PedidoModel();
-            $data = $this->request->getJSON();
+        try{
+            $model = new OrderModel();
+            $data = $this->request->getJSON();    
             if ($model->insert($data)) {
                 $response = [
                     'status'   => 201,
                     'messages' => [
-                        'success' => 'Dados salvos'
+                        'success' => 'Pedido salvo'
                     ],
                     'Pedido' => $data
                 ];
                 return $this->respond($response);
             }
-        } catch (Exception $e) {
-            $response = [
-                'status'   => 404,
-                'messages' => [
-                    'Error' => 'Cliente_id invalido'
-                ],
-            ];
-            return $this->respond($response, 404);
-        }
+        }catch(Exception $e){
+            return $this->respond($e);
+        }             
     }
 
 
 
     
-    // List All Order
     public function readOrder()
     {
-        $model = new PedidoModel();
+        $model = new OrderModel();
         $data = $model->findAll();
         return $this->respond($data);
     }
@@ -54,36 +45,34 @@ class OrderController extends BaseController
 
 
 
-    // List Order By Id
     public function showId($id = null)
     {
-        $model = new PedidoModel();
+        $model = new OrderModel();
         $data = $model->getWhere(['id' => $id])->getResult();
 
         if ($data) {
             return $this->respond($data);
         }
 
-        return $this->failNotFound('Nenhum dado encontrado com id ' . $id);
+        return $this->failNotFound('Nenhum pedido encontrado com id ' . $id);
     }
 
 
 
 
-    // Update Order
     public function updateOrder($id = null)
     {
-        $model = new PedidoModel();
+        $model = new OrderModel();
         $data = $this->request->getJSON();
         if (!$model->find($id)) {
-            return $this->failNotFound('Nenhum dado encontrado com id ' . $id);
+            return $this->failNotFound('Nenhum pedido encontrado com id ' . $id);
         }
         if ($model->update($id, $data)) {
             $response = [
                 'status'   => 200,
                 'error'    => null,
                 'messages' => [
-                    'success' => 'Dados atualizados'
+                    'success' => 'Status do pedido atualizado'
                 ],
                 'Pedido' => $data
             ];
@@ -96,37 +85,35 @@ class OrderController extends BaseController
 
 
 
-    // Delete Order
     public function deleteOrder($id = null)
     {
-        $model = new PedidoModel();
+        $model = new OrderModel();
         $data = $model->find($id);
 
         if ($data) {
             $model->delete($id);
             $response = [
                 'status'   => 200,
-                'error'    => null,
                 'messages' => [
-                    'success' => 'Dados removidos'
+                    'success' => 'Pedido removido'
                 ],
                 'Order' => $data
             ];
             return $this->respondDeleted($response);
         }
 
-        return $this->failNotFound('Nenhum dado encontrado com id ' . $id);
+        return $this->failNotFound('Nenhum pedido encontrado com id ' . $id);
     }
 
 
 
 
-    //Filtrar nomes
     public function filterStatus()
     {
-        $model = new PedidoModel();
+        $model = new OrderModel();
         $nome = $this->request->getGet('status');
         $client = $model->where('status', $nome)->findAll();
         return $this->respond($client);
     }
+    
 }

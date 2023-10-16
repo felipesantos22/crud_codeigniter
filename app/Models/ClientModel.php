@@ -29,7 +29,7 @@ class ClientModel extends Model
     ];
     protected $validationMessages   = [
         'cnpj' => [
-            'is_unique' => 'O cjpj já está em uso.',
+            'is_unique' => 'O cnpj já está em uso.',
             'required' => 'O campo cnpj é obrigatório.',
         ],
         'razao_social' => [

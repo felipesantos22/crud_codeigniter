@@ -5,7 +5,7 @@ namespace App\Controllers;
 use CodeIgniter\API\ResponseTrait;
 use App\Controllers\BaseController;
 use App\Models\ClientModel;
-use App\Models\PedidoModel;
+use App\Models\OrderModel;
 
 class ClientController extends BaseController
 {
@@ -56,7 +56,7 @@ class ClientController extends BaseController
         }
 
         // Carregar os pedidos associados a este cliente
-        $pedidoModel = new PedidoModel();
+        $pedidoModel = new OrderModel();
         $pedido = $pedidoModel->where('cliente_id', $clienteId)->findAll();
 
         $data = [

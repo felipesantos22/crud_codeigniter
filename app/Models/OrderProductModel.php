@@ -4,16 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class PedidoModel extends Model
+class OrderProductModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'pedido';
+    protected $table            = 'produto_pedido';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['status', 'cliente_id'];
+    protected $allowedFields    = ['pedido_id', 'produto_id'];
 
     // Dates
     protected $useTimestamps = false;
@@ -23,16 +23,8 @@ class PedidoModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    // https://codeigniter4.github.io/userguide/libraries/validation.html#
-    protected $validationRules      = [
-        'status' => 'required|in_list[Em Aberto,Pago,Cancelado]',
-        'cliente_id' => 'is_valid'
-    ];
-    protected $validationMessages   = [
-        'status' => [
-            'in_list' => 'O campo Status deve ser um dos seguintes valores: Em Aberto, Pago, Cancelado.'
-        ],
-    ];
+    protected $validationRules      = [];
+    protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 

@@ -4,28 +4,27 @@ namespace App\Controllers;
 
 use CodeIgniter\API\ResponseTrait;
 use App\Controllers\BaseController;
-use App\Models\ProdutoModel;
+use App\Models\ProductModel;
 
 class ProductController extends BaseController
 {
     use ResponseTrait;
 
-    //Create Product
+
     public function createProduct()
     {
-        $model = new ProdutoModel();
+        $model = new ProductModel();
         $data = $this->request->getJSON();
 
         if ($model->insert($data)) {
             $response = [
                 'status'   => 201,
-                'error'    => null,
                 'messages' => [
-                    'success' => 'Dados salvos'
+                    'success' => 'Produto salvo'
                 ],
                 'Produto' => $data
             ];
-            return $this->respond($response);
+            return $this->respondCreated($response);
         }
 
         return $this->fail($model->errors());
@@ -34,10 +33,9 @@ class ProductController extends BaseController
 
 
 
-    // List All Product
     public function readProduct()
     {
-        $model = new ProdutoModel();
+        $model = new ProductModel();
         $data = $model->findAll();
         return $this->respond($data);
     }
@@ -45,36 +43,33 @@ class ProductController extends BaseController
 
 
 
-    // List Product By Id
     public function showId($id = null)
     {
-        $model = new ProdutoModel();
+        $model = new ProductModel();
         $data = $model->getWhere(['id' => $id])->getResult();
 
         if ($data) {
             return $this->respond($data);
         }
 
-        return $this->failNotFound('Nenhum dado encontrado com id ' . $id);
+        return $this->failNotFound('Nenhum produto encontrado com id ' . $id);
     }
 
 
 
 
-    // Update Product
     public function updateProduct($id = null)
     {
-        $model = new ProdutoModel();
+        $model = new ProductModel();
         $data = $this->request->getJSON();
         if (!$model->find($id)) {
-            return $this->failNotFound('Nenhum dado encontrado com id ' . $id);
+            return $this->failNotFound('Nenhum produto encontrado com id ' . $id);
         }
         if ($model->update($id, $data)) {
             $response = [
                 'status'   => 200,
-                'error'    => null,
                 'messages' => [
-                    'success' => 'Dados atualizados'
+                    'success' => 'Produto atualizado'
                 ],
                 'Product' => $data
             ];
@@ -87,35 +82,31 @@ class ProductController extends BaseController
 
 
 
-    // Delete Product
     public function deleteProduct($id = null)
     {
-        $model = new ProdutoModel();
+        $model = new ProductModel();
         $data = $model->find($id);
 
         if ($data) {
             $model->delete($id);
             $response = [
                 'status'   => 200,
-                'error'    => null,
                 'messages' => [
-                    'success' => 'Dados removidos'
+                    'success' => 'Produto removido'
                 ],
                 'Product' => $data
             ];
             return $this->respondDeleted($response);
         }
-
-        return $this->failNotFound('Nenhum dado encontrado com id ' . $id);
+        return $this->failNotFound('Nenhum produto encontrado com id ' . $id);
     }
 
 
 
     
-     //Filtrar nomes
      public function filterName()
      {       
-         $model = new ProdutoModel();
+         $model = new ProductModel();
          $nome = $this->request->getGet('nome');
          $client = $model->where('nome',$nome)->findAll();
          return $this->respond($client);

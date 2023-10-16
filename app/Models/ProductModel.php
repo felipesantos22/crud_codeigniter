@@ -4,16 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class PedidosProdutosModel extends Model
+class ProductModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'produto_pedido';
+    protected $table            = 'produto';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['pedido_id', 'produto_id'];
+    protected $allowedFields    = ['nome','valor'];
 
     // Dates
     protected $useTimestamps = false;
@@ -23,10 +23,7 @@ class PedidosProdutosModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [
-        'pedido_id' => 'is_valid',
-        'produto_id' => 'is_valid'
-    ];
+    protected $validationRules      = [];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
