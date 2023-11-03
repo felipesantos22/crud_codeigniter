@@ -12,25 +12,7 @@ class OrderController extends BaseController
 {
     use ResponseTrait;
 
-
-    // public function createOrder()
-    // {
-
-    //     $model = new OrderModel();
-    //     $data = $this->request->getJSON();
-
-    //     if ($model->insert($data)) {
-    //         $response = [
-    //             'status'   => 201,
-    //             'messages' => [
-    //                 'success' => 'Pedido salvo'
-    //             ],
-    //             'Pedido' => $data
-    //         ];
-    //         return $this->respond($response);
-    //     }
-    //     return $this->fail($model->errors());
-    // }
+    
 
 
     public function createOrder()
@@ -39,11 +21,8 @@ class OrderController extends BaseController
         $model = new OrderModel();
         $data = $this->request->getJSON();
 
-        $clienteModel = new ClientModel();
-
-        
-        $cliente_id = $this->request->getVar('cliente_id');
-        
+        $clienteModel = new ClientModel();        
+        $cliente_id = $this->request->getVar('cliente_id');        
 
         $cliente = $clienteModel->find($cliente_id);
 

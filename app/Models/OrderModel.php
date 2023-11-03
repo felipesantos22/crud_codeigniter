@@ -26,6 +26,7 @@ class OrderModel extends Model
     // https://codeigniter4.github.io/userguide/libraries/validation.html#
     protected $validationRules      = [
         'status' => 'in_list[Em Aberto,Pago,Cancelado]',
+        'cliente_id' => 'required|is_valid_id[pedido.cliente_id]',
     ];
     protected $validationMessages   = [
         'status' => [
