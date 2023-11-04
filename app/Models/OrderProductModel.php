@@ -23,8 +23,18 @@ class OrderProductModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
+    protected $validationRules      = [
+        'pedido_id' => 'required|is_valid_order_id[produto_pedido.pedido_id]',
+        'produto_id' => 'required|is_valid_product_id[produto_pedido.produto_id]',
+    ];
+    protected $validationMessages   = [
+        'pedido_id' => [
+            'is_valid_order_id' => 'Pedido_id não exite.',
+        ],
+        'produto_id' => [
+            'is_valid_product_id' => 'Produto_id não exite.'
+        ],
+    ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 
