@@ -26,11 +26,14 @@ class OrderModel extends Model
     // https://codeigniter4.github.io/userguide/libraries/validation.html#
     protected $validationRules      = [
         'status' => 'in_list[Em Aberto,Pago,Cancelado]',
-        'cliente_id' => 'required|is_valid_id[pedido.cliente_id]',
+        'cliente_id' => 'required|is_valid_client_id[pedido.cliente_id]',
     ];
     protected $validationMessages   = [
         'status' => [
             'in_list' => 'O campo Status deve ser um dos seguintes valores: Em Aberto, Pago, Cancelado.',
+        ],
+        'cliente_id' => [
+            'is_valid_client_id' => 'Cliente_id não exite.'
         ],
     ];
     protected $skipValidation       = false;
